@@ -3,12 +3,47 @@ name: 'SWM GitHub Actions Basic'
 
 on: push
 
+env:
+  GLOBAL_LEVEL: "This value comes from the GLOBAL level"
+
 jobs:
   first-job:
     name: 'First Job'
 
     # 우분투에서 돌아라
     runs-on: ubuntu-latest
+
+    env:
+      JOB_LEVEL_1: "This value comes from the JOB level 1"
+
+    steps:
+      # yml에서 '-' 는 배열 중 하나의 요소를 뜻한다.
+      - name: Say Hello World 1
+        shell: bash
+        run: |
+          echo "Hello World from step 1"
+          echo "Global level : ${{env.GLOBAL_LEVEL}}"
+          echo "Global level : ${{env.STEP_LEVEL_1}}"
+          echo "Global level : ${{env.JOB_LEVEL_1}}"
+
+        env:
+          STEP_LEVEL_1: "This value comes from the STEP level 1"
+
+      - name: Say Hello World 2
+        shell: pwsh
+        run: |
+          echo "Hello World from step 2"
+        env:
+          STEP_LEVEL_2: "This value comes from the STEP level 2"
+
+  second-job:
+    name: 'First Job'
+
+    # 우분투에서 돌아라
+    runs-on: ubuntu-latest
+
+    env:
+      JOB_LEVEL_2: "This value comes from the JOB level 2"
 
     steps:
       # yml에서 '-' 는 배열 중 하나의 요소를 뜻한다.
@@ -17,7 +52,12 @@ jobs:
         run: |
           echo "Hello World from step 1"
 
+        env:
+          STEP_LEVEL_1: "This value comes from the STEP level 1"
+
       - name: Say Hello World 2
         shell: pwsh
         run: |
           echo "Hello World from step 2"
+        env:
+          STEP_LEVEL_2: "This value comes from the STEP level 2"
