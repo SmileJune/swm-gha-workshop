@@ -69,8 +69,12 @@ jobs:
       - name: Get output value
         shell: bash
         run: |
-          echo "steps.first.outputs.first_value_1 = ${{steps.first.outputs.first_value_1}}"
           echo "steps.first.outputs.first_value_2 = ${{steps.first.outputs.first_value_2}}"
+      
+      - name: Get Secret value
+        shell: bash
+        run: |
+          echo "My secret value is: ${{ secrets.MY_SECRET }}"
 
   second-job:
     name: "Second Job"
