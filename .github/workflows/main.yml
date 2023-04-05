@@ -1,0 +1,23 @@
+name: 'SWM GitHub Actions Basic'
+
+
+on: push
+
+jobs:
+  first-job:
+    name: 'First Job'
+
+    # 우분투에서 돌아라
+    runs-on: ubuntu-latest
+
+    steps:
+      # yml에서 '-' 는 배열 중 하나의 요소를 뜻한다.
+      - name: Say Hello World 1
+        shell: bash
+        run: |
+          echo "Hello World from step 1"
+
+      - name: Say Hello World 2
+        shell: pwsh
+        run: |
+          echo "Hello World from step 2"
