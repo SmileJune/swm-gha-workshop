@@ -23,8 +23,8 @@ jobs:
         run: |
           echo "Hello World from step 1"
           echo "Global level : ${{env.GLOBAL_LEVEL}}"
-          echo "Global level : ${{env.STEP_LEVEL_1}}"
-          echo "Global level : ${{env.JOB_LEVEL_1}}"
+          echo "STEP level : ${{env.STEP_LEVEL_1}}"
+          echo "JOB level : ${{env.JOB_LEVEL_1}}"
 
         env:
           STEP_LEVEL_1: "This value comes from the STEP level 1"
@@ -36,6 +36,28 @@ jobs:
         env:
           STEP_LEVEL_2: "This value comes from the STEP level 2"
 
+      - name: Set environment variable 1
+        shell: bash
+        run: |
+          echo "STEPSET_VALUE_1='This is the value 1 set in the step'" >> $GITHUB_ENV
+
+      - name: Set environment variable 2
+        shell: pwsh
+        run: |
+          echo "STEPSET_VALUE_2='This is the value 2 set iin the step'" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+
+      - name: Get environment variables in PowerShell
+        shell: pwsh
+        run: |
+          echo "Value 1 : $env:STEPSET_VALUE_1"
+          echo "Value 2 : $env:STEPSET_VALUE_2"
+
+
+      - name: Get environment variables in Bash
+        shell: bash
+        run: |
+          echo "Value 1 : $STEPSET_VALUE_1"
+          echo "Value 2 : $STEPSET_VALUE_2"
   second-job:
     name: 'First Job'
 
