@@ -1,5 +1,4 @@
-name: 'SWM GitHub Actions Basic'
-
+name: "SWM GitHub Actions Basic"
 
 on: push
 
@@ -8,7 +7,7 @@ env:
 
 jobs:
   first-job:
-    name: 'First Job'
+    name: "First Job"
 
     # 우분투에서 돌아라
     runs-on: ubuntu-latest
@@ -52,14 +51,14 @@ jobs:
           echo "Value 1 : $env:STEPSET_VALUE_1"
           echo "Value 2 : $env:STEPSET_VALUE_2"
 
-
       - name: Get environment variables in Bash
         shell: bash
         run: |
           echo "Value 1 : $STEPSET_VALUE_1"
           echo "Value 2 : $STEPSET_VALUE_2"
+
   second-job:
-    name: 'First Job'
+    name: "Second Job"
 
     # 우분투에서 돌아라
     runs-on: ubuntu-latest
