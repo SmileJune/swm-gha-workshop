@@ -62,7 +62,8 @@ jobs:
         run: |
           first_value="This is the value for the first output"
 
-          echo "::set-output name=first_value_1::$first_value"
+          echo "::add-mask::$first_value"
+
           echo "first_value_2=$first_value" >> $GITHUB_OUTPUT
 
       - name: Get output value
