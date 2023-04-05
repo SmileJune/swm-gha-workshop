@@ -7,7 +7,7 @@ env:
   GLOBAL_LEVEL: "This value comes from the GLOBAL level"
 
 jobs:
-  - first-job:
+  first-job:
     name: 'First Job'
 
     # 우분투에서 돌아라
@@ -36,7 +36,7 @@ jobs:
         env:
           STEP_LEVEL_2: "This value comes from the STEP level 2"
 
-  - second-job:
+  second-job:
     name: 'First Job'
 
     # 우분투에서 돌아라
